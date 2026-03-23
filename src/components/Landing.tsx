@@ -55,26 +55,51 @@ const Landing = () => {
     const carpetReverseImg = new Image();
     const brushImg = new Image();
 
-    carpetImg.src = "/carpet2.jpeg";
-    carpetReverseImg.src = "/carpet-reverse2.jpeg";
+    carpetImg.src = "/carpet.webp";
+    carpetReverseImg.src = "/carpet-reverse.webp";
     brushImg.src = "/icon/brush.png";
-
-    let isLoaded = 0;
-    const handleLoad = () => {
-      isLoaded++;
-      if (isLoaded === 3) initCanvas();
-    };
-
-    [carpetImg, carpetReverseImg, brushImg].forEach(
-      (img) => (img.onload = handleLoad),
-    );
 
     const initCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      ctx.drawImage(carpetReverseImg, 0, 0, canvas.width, canvas.height);
+
+      const imgRatio = carpetReverseImg.width / carpetReverseImg.height;
+      const canvasRatio = canvas.width / canvas.height;
+
+      if (imgRatio > canvasRatio) {
+        ctx.drawImage(
+          carpetReverseImg,
+          (canvas.width - canvas.height * imgRatio) / 2,
+          0,
+          canvas.height * imgRatio,
+          canvas.height,
+        );
+      } else {
+        ctx.drawImage(
+          carpetReverseImg,
+          0,
+          (canvas.height - canvas.width / imgRatio) / 2,
+          canvas.width,
+          canvas.width / imgRatio,
+        );
+      }
       startTimer();
     };
+
+    let isLoaded = 0;
+    const checkAllLoaded = () => {
+      isLoaded++;
+      if (isLoaded === 3) initCanvas();
+    };
+
+    [carpetImg, carpetReverseImg, brushImg].forEach((img) => {
+      if (img.complete) {
+        checkAllLoaded();
+      } else {
+        img.onload = checkAllLoaded;
+        img.onerror = () => console.error(`${img.src} 로드 실패`);
+      }
+    });
 
     const startTimer = () => {
       setTimeout(() => {
@@ -133,7 +158,7 @@ const Landing = () => {
 
   return (
     <LandingWrapper ref={containerRef} $isFadeOut={isFadeOut}>
-      <CarpetBottom src="/carpet2.jpeg" />
+      <CarpetBottom src="/carpet.webp" />
       <CarpetTop ref={canvasRef} />
       <CursorImg id="logo-cursor" src="/icon/cursor.svg" />
     </LandingWrapper>

@@ -61,8 +61,8 @@ const MobileLanding = () => {
     const carpetReverseImg = new Image();
     const brushImg = new Image();
 
-    carpetImg.src = "/carpet2.jpeg";
-    carpetReverseImg.src = "/carpet-reverse2.jpeg";
+    carpetImg.src = "/carpet.webp";
+    carpetReverseImg.src = "/carpet-reverse.webp";
     brushImg.src = "/icon/brush.png";
 
     let isLoaded = 0;
@@ -206,7 +206,7 @@ const MobileLanding = () => {
 
   return (
     <LandingWrapper ref={containerRef} $isFadeOut={isFadeOut}>
-      <CarpetBottom src="/carpet2.jpeg" />
+      <CarpetBottom src="/carpet.webp" />
       <CarpetTop ref={canvasRef} />
       <CursorImg id="logo-cursor" src="/icon/cursor.svg" />
     </LandingWrapper>

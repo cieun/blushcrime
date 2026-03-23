@@ -31,7 +31,6 @@ interface Project {
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-  // const currentProject = PROJECTS_DATA[currentIndex];
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
