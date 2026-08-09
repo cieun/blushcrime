@@ -4,6 +4,7 @@ import Player from "@vimeo/player";
 
 const PlayerWrapper = styled.div`
   width: 100%;
+  // max-height: 60vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -13,8 +14,7 @@ const PlayerWrapper = styled.div`
 const MediaContainer = styled.div`
   position: relative;
   width: 100%;
-
-  max-height: 40vh;
+  height: 55vh;
   background: #000;
   max-width: fit-content;
 

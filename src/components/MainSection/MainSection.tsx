@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 
 const MainContainer = styled.div`
-  flex: 2;
+  flex: 2.5;
 
   width: 100%;
   height: 100%;

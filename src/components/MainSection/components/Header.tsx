@@ -25,7 +25,7 @@ const Header = () => {
       <h1>
         Yoona is a multidisciplinary designer based in Seoul. <br />
         Contact me via{" "}
-        <a href="mailto:blushcrime@gmail.com">@b.l.u.s.h.c.r.i.m.e</a>
+        <a href="mailto:yoonaj1219@gmail.com">yoonaj1219@gmail.com</a>
       </h1>
     </StyledHeader>
   );

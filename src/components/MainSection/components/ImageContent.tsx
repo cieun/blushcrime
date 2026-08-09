@@ -11,7 +11,7 @@ const SliderContainer = styled.div`
 
   .image-content {
     width: 100%;
-    max-height: 40vh;
+    max-height: 60vh;
     display: flex;
     justify-content: flex-start;
     cursor: zoom-in;
@@ -21,7 +21,7 @@ const SliderContainer = styled.div`
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 40vh;
+    max-height: 60vh;
     object-fit: contain;
     display: block;
   }

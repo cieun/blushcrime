@@ -24,7 +24,6 @@ const MediaSection = styled.div`
   & > div {
     width: 100%;
     height: auto;
-    max-height: 70vh;
     aspect-ratio: auto;
     max-width: fit-content;
   }
