@@ -24,7 +24,9 @@ interface MenuProps {
 const Menu = ({ isAboutOpen, onToggleAbout }: MenuProps) => {
   return (
     <MenuContainer>
-      <MenuItems onClick={onToggleAbout}>{isAboutOpen ? "←" : "CV"}</MenuItems>
+      <MenuItems onClick={onToggleAbout}>
+        {isAboutOpen ? "←" : "About"}
+      </MenuItems>
       <MenuItems>
         <a
           href="https://www.instagram.com/yoonananananananananananananan/"

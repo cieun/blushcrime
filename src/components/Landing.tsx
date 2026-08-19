@@ -42,6 +42,7 @@ const Landing = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isFadeOut, setIsFadeOut] = useState(false);
+  const [bottomSrc, setBottomSrc] = useState("/carpet.webp");
 
   const prevPos = useRef({ x: 0, y: 0 });
 
@@ -51,38 +52,50 @@ const Landing = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const isMobile = window.innerWidth <= 768;
+
+    const carpetSrc = isMobile ? "/carpet-mb.webp" : "/carpet.webp";
+    const carpetReverseSrc = isMobile
+      ? "/carpet-reverse-mb.webp"
+      : "/carpet-reverse.webp";
+
+    setBottomSrc(carpetSrc);
+
     const carpetImg = new Image();
     const carpetReverseImg = new Image();
     const brushImg = new Image();
 
-    carpetImg.src = "/carpet.webp";
-    carpetReverseImg.src = "/carpet-reverse.webp";
+    carpetImg.src = carpetSrc;
+    carpetReverseImg.src = carpetReverseSrc;
     brushImg.src = "/icon/brush.png";
 
     const initCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      const imgRatio = carpetReverseImg.width / carpetReverseImg.height;
-      const canvasRatio = canvas.width / canvas.height;
+      // const imgRatio = carpetReverseImg.width / carpetReverseImg.height;
+      // const canvasRatio = canvas.width / canvas.height;
 
-      if (imgRatio > canvasRatio) {
-        ctx.drawImage(
-          carpetReverseImg,
-          (canvas.width - canvas.height * imgRatio) / 2,
-          0,
-          canvas.height * imgRatio,
-          canvas.height,
-        );
-      } else {
-        ctx.drawImage(
-          carpetReverseImg,
-          0,
-          (canvas.height - canvas.width / imgRatio) / 2,
-          canvas.width,
-          canvas.width / imgRatio,
-        );
-      }
+      // if (imgRatio > canvasRatio) {
+      //   ctx.drawImage(
+      //     carpetReverseImg,
+      //     (canvas.width - canvas.height * imgRatio) / 2,
+      //     0,
+      //     canvas.height * imgRatio,
+      //     canvas.height,
+      //   );
+      // } else {
+      //   ctx.drawImage(
+      //     carpetReverseImg,
+      //     0,
+      //     (canvas.height - canvas.width / imgRatio) / 2,
+      //     canvas.width,
+      //     canvas.width / imgRatio,
+      //   );
+      // }
+
+      ctx.drawImage(carpetReverseImg, 0, 0, canvas.width, canvas.height);
+
       startTimer();
     };
 
@@ -108,8 +121,8 @@ const Landing = () => {
           if (containerRef.current) {
             containerRef.current.style.display = "none";
           }
-        }, 4000);
-      }, 5000);
+        }, 2000);
+      }, 3000);
     };
 
     const scratch = (x: number, y: number) => {
@@ -149,16 +162,23 @@ const Landing = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => scratch(e.clientX, e.clientY);
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        scratch(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
 
   return (
     <LandingWrapper ref={containerRef} $isFadeOut={isFadeOut}>
-      <CarpetBottom src="/carpet.webp" />
+      <CarpetBottom src={bottomSrc} />
       <CarpetTop ref={canvasRef} />
       <CursorImg id="logo-cursor" src="/icon/hand.png" />
     </LandingWrapper>

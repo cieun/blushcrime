@@ -61,8 +61,8 @@ const MobileLanding = () => {
     const carpetReverseImg = new Image();
     const brushImg = new Image();
 
-    carpetImg.src = "/carpet.webp";
-    carpetReverseImg.src = "/carpet-reverse.webp";
+    carpetImg.src = "/carpet-mb.webp";
+    carpetReverseImg.src = "/carpet-reverse-mb.webp";
     brushImg.src = "/icon/brush.png";
 
     let isLoaded = 0;
@@ -83,29 +83,30 @@ const MobileLanding = () => {
       canvas.width = width;
       canvas.height = height;
 
-      const drawCoverImage = (img: HTMLImageElement) => {
-        const imgRatio = img.width / img.height;
-        const canvasRatio = canvas.width / canvas.height;
-        let drawWidth, drawHeight, offsetX, offsetY;
+      // const drawCoverImage = (img: HTMLImageElement) => {
+      //   const imgRatio = img.width / img.height;
+      //   const canvasRatio = canvas.width / canvas.height;
+      //   let drawWidth, drawHeight, offsetX, offsetY;
 
-        if (imgRatio > canvasRatio) {
-          // 이미지가 캔버스보다 더 가로로 긴 경우
-          drawHeight = canvas.height;
-          drawWidth = canvas.height * imgRatio;
-          offsetX = (canvas.width - drawWidth) / 2;
-          offsetY = 0;
-        } else {
-          // 이미지가 캔버스보다 더 세로로 긴 경우
-          drawWidth = canvas.width;
-          drawHeight = canvas.width / imgRatio;
-          offsetX = 0;
-          offsetY = (canvas.height - drawHeight) / 2;
-        }
+      //   if (imgRatio > canvasRatio) {
+      //     // 이미지가 캔버스보다 더 가로로 긴 경우
+      //     drawHeight = canvas.height;
+      //     drawWidth = canvas.height * imgRatio;
+      //     offsetX = (canvas.width - drawWidth) / 2;
+      //     offsetY = 0;
+      //   } else {
+      //     // 이미지가 캔버스보다 더 세로로 긴 경우
+      //     drawWidth = canvas.width;
+      //     drawHeight = canvas.width / imgRatio;
+      //     offsetX = 0;
+      //     offsetY = (canvas.height - drawHeight) / 2;
+      //   }
 
-        ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-      };
+      //   ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+      // };
 
-      drawCoverImage(carpetReverseImg);
+      // drawCoverImage(carpetReverseImg);
+      ctx.drawImage(carpetReverseImg, 0, 0, canvas.width, canvas.height);
       startTimer();
     };
 
@@ -140,25 +141,26 @@ const MobileLanding = () => {
 
         ctx.globalCompositeOperation = "source-in";
 
-        const imgRatio = carpetReverseImg.width / carpetReverseImg.height;
-        const canvasRatio = canvas.width / canvas.height;
-        if (imgRatio > canvasRatio) {
-          ctx.drawImage(
-            carpetReverseImg,
-            (canvas.width - canvas.height * imgRatio) / 2,
-            0,
-            canvas.height * imgRatio,
-            canvas.height,
-          );
-        } else {
-          ctx.drawImage(
-            carpetReverseImg,
-            0,
-            (canvas.height - canvas.width / imgRatio) / 2,
-            canvas.width,
-            canvas.width / imgRatio,
-          );
-        }
+        // const imgRatio = carpetReverseImg.width / carpetReverseImg.height;
+        // const canvasRatio = canvas.width / canvas.height;
+        // if (imgRatio > canvasRatio) {
+        //   ctx.drawImage(
+        //     carpetReverseImg,
+        //     (canvas.width - canvas.height * imgRatio) / 2,
+        //     0,
+        //     canvas.height * imgRatio,
+        //     canvas.height,
+        //   );
+        // } else {
+        //   ctx.drawImage(
+        //     carpetReverseImg,
+        //     0,
+        //     (canvas.height - canvas.width / imgRatio) / 2,
+        //     canvas.width,
+        //     canvas.width / imgRatio,
+        //   );
+        // }
+        ctx.drawImage(carpetReverseImg, 0, 0, canvas.width, canvas.height);
 
         ctx.restore();
       } else {
@@ -206,7 +208,7 @@ const MobileLanding = () => {
 
   return (
     <LandingWrapper ref={containerRef} $isFadeOut={isFadeOut}>
-      <CarpetBottom src="/carpet.webp" />
+      <CarpetBottom src="/carpet-mb.webp" />
       <CarpetTop ref={canvasRef} />
       <CursorImg id="logo-cursor" src="/icon/hand.png" />
     </LandingWrapper>
