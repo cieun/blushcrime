@@ -210,7 +210,7 @@ const MobileLanding = () => {
     <LandingWrapper ref={containerRef} $isFadeOut={isFadeOut}>
       <CarpetBottom src="/carpet-mb.webp" />
       <CarpetTop ref={canvasRef} />
-      <CursorImg id="logo-cursor" src="/icon/hand.png" />
+      <CursorImg id="logo-cursor" src="/icon/hand_03.png" />
     </LandingWrapper>
   );
 };

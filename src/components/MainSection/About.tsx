@@ -104,22 +104,22 @@ const CV_DATA = [
       {
         id: 1,
         year: "2022",
-        detail: "«Kick & Kreate»,777 gallery, Seoul, Korea",
+        detail: "«Kick & Kreate», 777 gallery, Seoul, Korea",
       },
       {
         id: 2,
         year: "2022",
-        detail: "«위에민쥰 전시»  ACC 국립아시아 문화전당, Gwangju, Korea",
+        detail: "«Yueminjun exhibition», ACC, Gwangju, Korea",
       },
       {
         id: 3,
         year: "2025",
-        detail: "«The Downtown» HIVCD Graduation, Seoul, Korea",
+        detail: "«The Downtown», HIVCD Graduation, Seoul, Korea",
       },
       {
         id: 4,
         year: "2026",
-        detail: "«Dirty Precision»  온수공간, seoul, Korea ",
+        detail: "«Dirty Precision», onsu gonggan, seoul, Korea ",
       },
     ],
   },
