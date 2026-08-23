@@ -117,8 +117,8 @@ const MobileLanding = () => {
           if (containerRef.current) {
             containerRef.current.style.display = "none";
           }
-        }, 6000);
-      }, 7000);
+        }, 2000);
+      }, 3000);
     };
 
     const scratch = (x: number, y: number) => {
